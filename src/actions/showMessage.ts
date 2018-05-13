@@ -3,10 +3,11 @@ import { dialog, OpenDialogOptions, MessageBoxOptions } from "electron";
 
 export const selectFilesAction: ShowMessageAction = {
   
-  type: ACTION_TYPE.SELECT_FILES,
+  type: ACTION_TYPE.SHOW_MESSAGE,
 
  /**
-   * @param config From electron's showOpenDialogmethod documentation: 
+   * @param config From electron's showOpenDialogmethod documentation
+   * Although with showMessageBox we could implement a confirm and more, this class only present an alert and not has any other logic. For confirmation and selections between 2 or more items use showConfirm
 
   * Shows a message box, it will block the process until the message box is closed.
   * It returns the index of the clicked button. The browserWindow argument allows
@@ -16,29 +17,41 @@ export const selectFilesAction: ShowMessageAction = {
     */
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
     return new Promise(resolve => {
-      const selection: string[] = dialog.showMessageBox(config.dialog || defaultOpenDialogOptions)
-      resolve({id:config.id, value: selection })
+
+    const defaultShowMessageOptions: MessageBoxOptions = {
+      title: 'Choose the target file', 
+      buttons: ['OK'],
+      message: config.message || 'Generic message'
+    }
+    const finalConfig = Object.assign({}, {dialog: defaultShowMessageOptions}, config)
+    finalConfig.dialog = Object.assign({}, defaultShowMessageOptions, config.dialog)
+
+    let callbackCalled = false
+    const id = dialog.showMessageBox(finalConfig.dialog, (buttonPressed:number, checkboxChecked:boolean)=>{
+      callbackCalled = true
+      console.log('callback called')
     })
+    if(!callbackCalled){
+      console.log('callback cNOT alled')
+      resolve({id:config.id, value: id })
+    }
+  })
 
   }
 }
 
-const defaultOpenDialogOptions: MessageBoxOptions = {
-  // properties: ['openFile', 'multiSelections'], 
-  title: 'Choose the target file', 
-  buttons: ['Ok']
-}
 
 export interface ShowMessageQuestion extends Question{
-  dialog? : OpenDialogOptions
-  buttonLabel?: 'string'
+  message: string,
+  dialog? : MessageBoxOptions
+  buttonLabel?: string
 }
 
 export interface ShowMessageAnswer extends Answer {
-  value: string[]
+  value: number
 }
-/** well this is not an inquierer - but useful to show important info to the user - promise wont be solve until use clicked accept button.  */
-export interface ShowMessageAction extends Action {
+/** well this is not an inquirer just an alert, but useful to show important info to the user - promise wont be solve until use clicked accept button.  */
+export interface ShowMessageAction extends Action<ShowMessageQuestion, ShowMessageAnswer> {
   execute: (host: Inquirer, config: ShowMessageQuestion) => Promise<ShowMessageAnswer>
 }
 

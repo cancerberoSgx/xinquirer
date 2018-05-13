@@ -6,7 +6,7 @@ import { Action, Inquirer, Question, Answer } from "./types";
 
 class InquirerImpl implements Inquirer {
   window: BrowserWindow
-  actions: Action[]
+  actions: Action<any, any>[]
   started = false
   async start() {
     this.window = await createWindow()
@@ -34,7 +34,7 @@ class InquirerImpl implements Inquirer {
   }
 }
 
-const ALL_ACTIONS: Action[] = []
+const ALL_ACTIONS: Action<any, any>[] = []
 ALL_ACTIONS.push(selectFilesAction)
 export const newInquirer = (): Inquirer => {
   const instance = new InquirerImpl()

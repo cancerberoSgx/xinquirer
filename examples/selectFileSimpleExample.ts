@@ -11,7 +11,7 @@ async function test() {
       label: 'Select a file where to move the class' 
     }
   ])
-  console.log(`you choose file: `, answers)
+  console.log(`you choose file: `, JSON.stringify(answers))
   await inquirer.stop()
 }
 // try {

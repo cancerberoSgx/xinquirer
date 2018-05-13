@@ -1,7 +1,7 @@
 {
   "name": "xinquirer",
   "version": "0.0.1",
-  "description": "like inquierer but for X - dialogs that pop up on top of user's window to ask for information",
+  "description": "like Inquirer.js but for X. Ask user questions showing annoying dialogs on top of the current window. based on electron. node.js API.",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc && cp -rf src/assets dist/src",

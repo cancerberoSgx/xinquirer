@@ -1,6 +1,5 @@
-
 /**
- * Similar API to inquirer CLI tool. Differences: start() must be called before promot() and answers format is sightly different
+ * Similar API to inquirer.js. Differences: start() must be called before promot() and answers format is sightly different (array of {id, value} objects). 
  */
 export interface Inquirer {
   /** will open a new hidden window that will be hosting nexts prompts calls so they are faster. User can call stop any time to close the app window */
@@ -12,7 +11,8 @@ export interface Inquirer {
 }
 
 export enum ACTION_TYPE {
-  SELECT_FILES
+  SELECT_FILES,
+  SHOW_MESSAGE
 }
 
 export interface Question {
@@ -21,9 +21,9 @@ export interface Question {
   label: string
 }
 
-export interface Action {
+export interface Action<Q extends Question, A extends Answer> {
   type: ACTION_TYPE
-  execute: (host: Inquirer, question: Question) => Promise<Answer>
+  execute: (host: Inquirer, question: Q ) => Promise<Answer>
 }
 
 export interface Answer {
