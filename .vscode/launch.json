@@ -17,7 +17,7 @@
                 "--inspect",
                 "--debug-brk",
             ],
-            "cwd": "${workspaceFolder}/typescript-ast-util/",
+            "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}/node_modules/electron/cli.js",
             "sourceMaps": true
         }

@@ -1,27 +1,31 @@
 {
   "name": "xinquirer",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "like inquierer but for X - dialogs that pop up on top of user's window to ask for information",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "build": "tsc && cp -rf src/assets dist",
-    "start": "rm -rf dist/ && npm run build && electron dist/index.js",
-    "run": "node node_modules/electron/cli.js"
+    "build": "tsc && cp -rf src/assets dist/src",
+    "start": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",
+    "run": "node node_modules/electron/cli.js dist/examples/selectFileSimpleExample.js",
+    "prepare": "npm run build"
   },
   "keywords": [
-    "inquierer",
+    "inquirer",
     "electron",
     "data",
     "input",
     "UI",
     "X",
-    "filechooser"
+    "filechooser",
+    "dialogs",
+    "compatible",
+    "desktop",
+    "node.js"
   ],
-  "author": "",
+  "author": "Sebstián Gurin",
   "license": "ISC",
   "dependencies": {
-    "electron": "^2.0.0",
-    "loud-rejection": "^1.6.0"
+    "electron": "^2.0.0"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
@@ -29,4 +33,3 @@
     "typescript": "^2.8.3"
   }
 }
-

@@ -29,8 +29,6 @@ class InquirerImpl implements Inquirer {
       const answer = await action.execute(this, question)
       return answer
     })
-    debugger
-    console.log('promise.all ' + promises + );
     
     return Promise.all(promises)
   }
