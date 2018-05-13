@@ -1,11 +1,11 @@
 {
   "name": "xinquirer",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "like inquierer but for X - dialogs that pop up on top of user's window to ask for information",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && cp -rf src/assets dist/src",
-    "start": "electron ./src"
+    "build": "tsc && cp -rf src/assets dist",
+    "start": "electron ."
   },
   "keywords": [
     "inquierer",

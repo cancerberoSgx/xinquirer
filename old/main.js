@@ -1,25 +1,26 @@
-// const electron = require('electron')
-import * as electron from 'electron'
-import {BrowserWindow, app} from 'electron'
-// const app = electron.app
-// import BrowserWindow = electron.BrowserWindow
+const electron = require('electron')
+const app = electron.app
+const BrowserWindow = electron.BrowserWindow
 
-import {join} from 'path'
-import {url} from 'url'
-
+const path = require('path')
+const url = require('url')
 let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, show: false})
+  mainWindow = new BrowserWindow({width: 800, height: 600
+    , show: false
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'assets', 'index.html'),
     protocol: 'file:',
-    slashes: true
+    // slashes: true
   }))
-  // mainWindow.webContents.openDevTools() // Open the DevTools.
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -29,9 +30,13 @@ function createWindow () {
     mainWindow = null
   })
 
+
+  // const {dialog} = require('electron').remote;
+
+// document.queryselector('#selectBtn').addEventListener('click', function (event) {
   electron.dialog.showOpenDialog({
-      properties: ['openFile', 'multiSelections']
-  }, function (files) {
+    properties: ['openFile', 'multiSelections'], title: 'Choose the target file', filters: []
+}, function (files) {
     if (files !== undefined) {
       console.log(files)
         // handle files
