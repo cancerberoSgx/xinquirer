@@ -1,45 +1,41 @@
-import * as electron from 'electron'
-import { BrowserWindow, app } from 'electron'
-import { join } from 'path'
-import { format } from 'url'
+// import * as electron from 'electron'
+import { BrowserWindow, app, dialog } from 'electron'
+import * as path from 'path'
+import * as url from 'url'
 
 let mainWindow: BrowserWindow
 
 function createWindow() {
+  // console.log('create window')
 
-  mainWindow = new BrowserWindow({
-    width: 800, height: 600,
-    // show: false
+  mainWindow = new BrowserWindow({  // Create the browser window.
+    width: 800, height: 600
+    , show: false
   })
-  mainWindow.loadURL(format({
-    pathname: join(__dirname, 'assets', 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
-  // mainWindow.webContents.openDevTools() // Open the DevTools.
 
-  mainWindow.on('closed', function () {  // Emitted when the window is closed.
+  // and load the index.html of the app.
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'assets', 'index.html'),
+    protocol: 'file:'
+  }))
+
+  // Emitted when the window is closed.
+  mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
     mainWindow = null
   })
 
-
-setTimeout(() => {
-  electron.dialog.showOpenDialog({
-    properties: ['openFile', 'multiSelections']
-  }, function (files) {
+  dialog.showOpenDialog({
+    properties: ['openFile', 'multiSelections'], title: 'Choose the target file', filters: []
+  }, function (files:any) {
     if (files !== undefined) {
       console.log(files)
       // handle files
     }
-  })  
-}, 2000);
-  // mainWindow.on('show', ()=>{
-
-   
-  // })
-
+  })
 }
+
+
 
 // This method will be called when Electron has finished initialization and is ready to create browser windows. Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
