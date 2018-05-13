@@ -1,0 +1,29 @@
+{
+  "name": "xinquirer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && cp -rf src/assets dist/src",
+    "start": "electron ./src"
+  },
+  "keywords": [
+    "inquierer",
+    "electron",
+    "data",
+    "input",
+    "UI",
+    "X",
+    "filechooser"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/node": "^10.0.8",
+    "typescript": "^2.8.3"
+  }
+}
