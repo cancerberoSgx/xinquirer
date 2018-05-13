@@ -1,6 +1,5 @@
 import { BrowserWindow } from "electron";
 import { createWindow } from "./createWindow";
-import { selectFilesAction } from './actions/selectFiles';
 import { Action, Inquirer, Question, Answer } from "./types";
 
 
@@ -35,7 +34,12 @@ class InquirerImpl implements Inquirer {
 }
 
 const ALL_ACTIONS: Action<any, any>[] = []
+
+import { selectFilesAction } from './actions/selectFiles'
+import { showMessageAction } from './actions/showMessage';;
+
 ALL_ACTIONS.push(selectFilesAction)
+ALL_ACTIONS.push(showMessageAction)
 export const newInquirer = (): Inquirer => {
   const instance = new InquirerImpl()
   instance.actions = ALL_ACTIONS

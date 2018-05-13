@@ -1,7 +1,7 @@
 import { ACTION_TYPE, Inquirer, Action, Question, Answer } from "../types";
 import { dialog, OpenDialogOptions, MessageBoxOptions } from "electron";
 
-export const selectFilesAction: ShowMessageAction = {
+export const showMessageAction: ShowMessageAction = {
   
   type: ACTION_TYPE.SHOW_MESSAGE,
 
@@ -26,15 +26,16 @@ export const selectFilesAction: ShowMessageAction = {
     const finalConfig = Object.assign({}, {dialog: defaultShowMessageOptions}, config)
     finalConfig.dialog = Object.assign({}, defaultShowMessageOptions, config.dialog)
 
-    let callbackCalled = false
+    // let callbackCalled = false
     const id = dialog.showMessageBox(finalConfig.dialog, (buttonPressed:number, checkboxChecked:boolean)=>{
-      callbackCalled = true
-      console.log('callback called')
-    })
-    if(!callbackCalled){
-      console.log('callback cNOT alled')
+      // callbackCalled = true
+      // console.log('callback called')
       resolve({id:config.id, value: id })
-    }
+    })
+    // if(!callbackCalled){
+    //   console.log('callback cNOT alled')
+    //   resolve({id:config.id, value: id })
+    // }
   })
 
   }

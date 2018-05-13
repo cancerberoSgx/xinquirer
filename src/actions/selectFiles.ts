@@ -26,8 +26,8 @@ export const selectFilesAction: SelectFilesAction = {
       const selection: string[] = dialog.showOpenDialog(
         config.openDialogOptions || defaultOpenDialogOptions,
         (files: string[], bookmarks: string[]) => {
-          // TODO investigate. possible electron issue . this callback doesn't seem to work - leave resolve just in case - seems to be an issue (according to docs it should pass). TODO investigate
-          console.log('callback called');
+          // EX TODO: FALSA ALARMA pero dej el cartel TODO investigate. possible electron issue . this callback doesn't seem to work - leave resolve just in case - seems to be an issue (according to docs it should pass). TODO investigate
+          // console.log('callback called');
           
           // callbackCalled = true
           resolve({ id: config.id, value: {files, bookmarks} })
