@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc && cp -rf src/assets dist",
-    "start": "rm -rf dist/ && npm run build && electron dist/index.js"
+    "start": "rm -rf dist/ && npm run build && electron dist/index.js",
+    "run": "node node_modules/electron/cli.js"
   },
   "keywords": [
     "inquierer",
@@ -19,7 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^2.0.0"
+    "electron": "^2.0.0",
+    "loud-rejection": "^1.6.0"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
@@ -27,3 +29,4 @@
     "typescript": "^2.8.3"
   }
 }
+

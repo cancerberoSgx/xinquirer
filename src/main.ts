@@ -1,19 +1,27 @@
+import { BrowserWindow } from "electron";
 import { createWindow } from "./createWindow";
+import { selectFilesAction } from './actions/selectFiles';
+import { Action, Inquirer, Question, Answer } from "./types";
 
 
 class InquirerImpl implements Inquirer {
-
-  actions: Action[] = []
+  window: BrowserWindow
+  actions: Action[]
   started = false
-
   async start() {
-    await createWindow()
+    this.window = await createWindow()
     this.started = true
     return
   }
-
-  prompt(questions: Question[]): Promise<Answer>[] {
-    return questions.map(async question => {
+  stop(): Promise<void> {
+    this.window.close()
+    return Promise.resolve()
+  }
+  prompt(questions: Question[]): Promise<Answer[]> {
+    if (!this.started) {
+      throw new Error('start() must be called before prompt()')
+    }
+    const promises = questions.map(async question => {
       const action = this.actions.find(a => a.type === question.type)
       if (!action) {
         throw new Error('Action type not supported: ' + JSON.stringify(question))
@@ -21,41 +29,17 @@ class InquirerImpl implements Inquirer {
       const answer = await action.execute(this, question)
       return answer
     })
-  }
-
-  registerAction(action: Action) {
-    this.actions.push(action)
+    debugger
+    console.log('promise.all ' + promises + );
+    
+    return Promise.all(promises)
   }
 }
 
+const ALL_ACTIONS: Action[] = []
+ALL_ACTIONS.push(selectFilesAction)
 export const newInquirer = (): Inquirer => {
-  return new InquirerImpl()
+  const instance = new InquirerImpl()
+  instance.actions = ALL_ACTIONS
+  return instance
 }
-
-export enum TYPE {
-  SELECT_FILES
-}
-
-export interface Question {
-  id: string
-  type: TYPE
-  label: string
-}
-
-export interface Inquirer {
-  prompt(questions: Question[]): Promise<any>[]
-}
-export interface Action {
-  type: TYPE
-  execute: (host: Inquirer, question: Question) => Promise<any>
-}
-
-export interface Answer {
-  id: string
-  value: any
-}
-
-
-// last import all types so they get combined and register. TODO: IOC
-import { selectFilesAction } from './types/selectFiles'
-// ...

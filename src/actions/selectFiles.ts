@@ -1,15 +1,13 @@
-import { TYPE, Inquirer, Action, Question } from "../main";
+import { ACTION_TYPE, Inquirer, Action, Question, Answer } from "../types";
 import { dialog, OpenDialogOptions } from "electron";
 
 export const selectFilesAction: SelectFilesAction = {
-  type: TYPE.SELECT_FILES,
+  type: ACTION_TYPE.SELECT_FILES,
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
       dialog.showOpenDialog(config.openDialogOptions || defaultOpenDialogOptions),
         (files: string[], bookmarks: string[]) => {
-          const answer = {} as any
-          answer[config.id] = files
-          resolve(answer)
+          resolve({id:config.id, value: files })
       }
     })
   }
@@ -24,6 +22,10 @@ const defaultOpenDialogOptions: OpenDialogOptions = {
 export interface SelectFilesQuestion extends Question{
   openDialogOptions? : OpenDialogOptions
 }
-export interface SelectFilesAction extends Action{
-  execute: (host: Inquirer, config: SelectFilesQuestion) => Promise<string[]>
+export interface SelectFilesAnswer extends Answer {
+  value: string[]
 }
+export interface SelectFilesAction extends Action {
+  execute: (host: Inquirer, config: SelectFilesQuestion) => Promise<SelectFilesAnswer>
+}
+
