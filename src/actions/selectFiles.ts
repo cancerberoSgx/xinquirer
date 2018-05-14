@@ -8,17 +8,9 @@ export const selectFilesAction: SelectFilesAction = {
 
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
-
-    // const finalDialogOptions = Object.assign({}, {
-    //   properties: ['openFile', 'multiSelections'],
-    //   title: 'Choose the target file',
-    //   filters: []
-    // }, config)
-
     if(config.title){
       host.getBrowserWindow().setTitle(config.title)
     }
-
     const selection: string[] = dialog.showOpenDialog(host.getBrowserWindow(), questionToElectronDialogOption(config),
       (files: string[], bookmarks: string[]) => {
         resolve({ id: config.id, value: {files, bookmarks} })
@@ -29,8 +21,6 @@ export const selectFilesAction: SelectFilesAction = {
 
 
 export interface SelectFilesQuestion extends Question, OpenDialogOptions {
-  /** properties to pass directly when creating electron dialog */
-  // dialog?: OpenDialogOptions
 
   /**
    * Validate the answer, if not valid return a string with a hint explaining the user why. 

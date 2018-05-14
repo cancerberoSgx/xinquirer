@@ -82,6 +82,9 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="_types_d_.question.html" class="tsd-signature-type">Question</a>
+					</li>
+					<li>
+						<a href="_types_d_.messageboxoptions.html" class="tsd-signature-type">MessageBoxOptions</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">ShowMessageQuestion</span>
@@ -97,8 +100,21 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_actions_showmessage_d_.showmessagequestion.html#button" class="tsd-kind-icon">button</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#buttons" class="tsd-kind-icon">buttons</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#cancelid" class="tsd-kind-icon">cancel<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#checkboxchecked" class="tsd-kind-icon">checkbox<wbr>Checked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#checkboxlabel" class="tsd-kind-icon">checkbox<wbr>Label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#defaultid" class="tsd-kind-icon">default<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#detail" class="tsd-kind-icon">detail</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_actions_showmessage_d_.showmessagequestion.html#dialog" class="tsd-kind-icon">dialog</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#dialogtype" class="tsd-kind-icon">dialog<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#icon" class="tsd-kind-icon">icon</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_actions_showmessage_d_.showmessagequestion.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#nolink" class="tsd-kind-icon">no<wbr>Link</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#normalizeaccesskeys" class="tsd-kind-icon">normalize<wbr>Access<wbr>Keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_actions_showmessage_d_.showmessagequestion.html#title" class="tsd-kind-icon">title</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#type" class="tsd-kind-icon">type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_showmessage_d_.showmessagequestion.html#validate" class="tsd-kind-icon">validate</a></li>
 							</ul>
@@ -109,12 +125,129 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="button" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> button</h3>
+					<div class="tsd-signature tsd-kind-icon">button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in actions/showMessage.d.ts:11</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>button label</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="buttons" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> buttons</h3>
+					<div class="tsd-signature tsd-kind-icon">buttons<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#buttons">buttons</a></p>
+						<ul>
+							<li>Defined in types.d.ts:78</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Array of texts for buttons. On Windows, an empty array will result in one button
+							labeled &quot;OK&quot;.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="cancelid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cancel<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#cancelid">cancelId</a></p>
+						<ul>
+							<li>Defined in types.d.ts:112</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The index of the button to be used to cancel the dialog, via the Esc key. By
+								default this is assigned to the first button with &quot;cancel&quot; or &quot;no&quot; as the label.
+								If no such labeled buttons exist and this option is not set, 0 will be used as
+							the return value or callback response. This option is ignored on Windows.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="checkboxchecked" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> checkbox<wbr>Checked</h3>
+					<div class="tsd-signature tsd-kind-icon">checkbox<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#checkboxchecked">checkboxChecked</a></p>
+						<ul>
+							<li>Defined in types.d.ts:104</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Initial checked state of the checkbox. false by default.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="checkboxlabel" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> checkbox<wbr>Label</h3>
+					<div class="tsd-signature tsd-kind-icon">checkbox<wbr>Label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#checkboxlabel">checkboxLabel</a></p>
+						<ul>
+							<li>Defined in types.d.ts:100</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If provided, the message box will include a checkbox with the given label. The
+							checkbox state can be inspected only when using callback.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="defaultid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#defaultid">defaultId</a></p>
+						<ul>
+							<li>Defined in types.d.ts:83</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Index of the button in the buttons array which will be selected by default when
+							the message box opens.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="detail" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> detail</h3>
+					<div class="tsd-signature tsd-kind-icon">detail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#detail">detail</a></p>
+						<ul>
+							<li>Defined in types.d.ts:95</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Extra information of the message.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="dialog" class="tsd-anchor"></a>
-					<h3>dialog</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dialog</h3>
 					<div class="tsd-signature tsd-kind-icon">dialog<span class="tsd-signature-symbol">:</span> <a href="_types_d_.messageboxoptions.html" class="tsd-signature-type">MessageBoxOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in actions/showMessage.d.ts:9</li>
+							<li>Defined in actions/showMessage.d.ts:15</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -124,15 +257,117 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="dialogtype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dialog<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">dialog<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#dialogtype">dialogType</a></p>
+						<ul>
+							<li>Defined in types.d.ts:73</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Can be &quot;none&quot;, &quot;info&quot;, &quot;error&quot;, &quot;question&quot; or &quot;warning&quot;. On Windows, &quot;question&quot;
+								displays the same icon as &quot;info&quot;, unless you set an icon using the &quot;icon&quot;
+							option. On macOS, both &quot;warning&quot; and &quot;error&quot; display the same warning icon.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="icon" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> icon</h3>
+					<div class="tsd-signature tsd-kind-icon">icon<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">NativeImage</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#icon">icon</a></p>
+						<ul>
+							<li>Defined in types.d.ts:105</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_types_d_.question.html">Question</a>.<a href="_types_d_.question.html#id">id</a></p>
 						<ul>
-							<li>Defined in types.d.ts:22</li>
+							<li>Defined in types.d.ts:24</li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#message">message</a></p>
+						<ul>
+							<li>Defined in actions/showMessage.d.ts:13</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Message to show to the user</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="nolink" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> no<wbr>Link</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Link<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#nolink">noLink</a></p>
+						<ul>
+							<li>Defined in types.d.ts:119</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>On Windows Electron will try to figure out which one of the buttons are common
+								buttons (like &quot;Cancel&quot; or &quot;Yes&quot;), and show the others as command links in the
+								dialog. This can make the dialog appear in the style of modern Windows apps. If
+							you don&#39;t like this behavior, you can set noLink to true.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="normalizeaccesskeys" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> normalize<wbr>Access<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">normalize<wbr>Access<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#normalizeaccesskeys">normalizeAccessKeys</a></p>
+						<ul>
+							<li>Defined in types.d.ts:129</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Normalize the keyboard access keys across platforms. Default is false. Enabling
+								this assumes &amp; is used in the button labels for the placement of the keyboard
+								shortcut access key and labels will be converted so they work correctly on each
+								platform, &amp; characters are removed on macOS, converted to _ on Linux, and left
+								untouched on Windows. For example, a button label of Vie&amp;w will be converted to
+								Vie_w on Linux and View on macOS and can be selected via Alt-W on Windows and
+							Linux.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="title" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> title</h3>
+					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_types_d_.messageboxoptions.html">MessageBoxOptions</a>.<a href="_types_d_.messageboxoptions.html#title">title</a></p>
+						<ul>
+							<li>Defined in actions/showMessage.d.ts:9</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>title of the dialog</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="type" class="tsd-anchor"></a>
@@ -141,7 +376,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_types_d_.question.html">Question</a>.<a href="_types_d_.question.html#type">type</a></p>
 						<ul>
-							<li>Defined in types.d.ts:23</li>
+							<li>Defined in types.d.ts:25</li>
 						</ul>
 					</aside>
 				</section>
@@ -152,7 +387,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_types_d_.question.html">Question</a>.<a href="_types_d_.question.html#validate">validate</a></p>
 						<ul>
-							<li>Defined in types.d.ts:28</li>
+							<li>Defined in types.d.ts:30</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,10 +433,49 @@
 						<a href="_actions_showmessage_d_.showmessagequestion.html" class="tsd-kind-icon">Show<wbr>Message<wbr>Question</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#button" class="tsd-kind-icon">button</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#buttons" class="tsd-kind-icon">buttons</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#cancelid" class="tsd-kind-icon">cancel<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#checkboxchecked" class="tsd-kind-icon">checkbox<wbr>Checked</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#checkboxlabel" class="tsd-kind-icon">checkbox<wbr>Label</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#defaultid" class="tsd-kind-icon">default<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#detail" class="tsd-kind-icon">detail</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_actions_showmessage_d_.showmessagequestion.html#dialog" class="tsd-kind-icon">dialog</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#dialogtype" class="tsd-kind-icon">dialog<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#icon" class="tsd-kind-icon">icon</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_actions_showmessage_d_.showmessagequestion.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#nolink" class="tsd-kind-icon">no<wbr>Link</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#normalizeaccesskeys" class="tsd-kind-icon">normalize<wbr>Access<wbr>Keys</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="_actions_showmessage_d_.showmessagequestion.html#title" class="tsd-kind-icon">title</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_actions_showmessage_d_.showmessagequestion.html#type" class="tsd-kind-icon">type</a>

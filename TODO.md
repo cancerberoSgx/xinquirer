@@ -1,1 +1,2 @@
  * select file: just to try: validator to force user to select a number of files of folders. 
+ * enhancement - question property that allows to not execute that step according to some predicate and proceed with the next. predicate receive current answersr. 

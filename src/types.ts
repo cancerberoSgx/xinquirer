@@ -14,7 +14,7 @@ export interface Inquirer {
   stop(): Promise<void>
 
   getBrowserWindow(): BrowserWindow
-  
+
   /** 
    * array of questions that will be presented to the user in order and serially. 
    * When all are answered return the array of answers (questions and answers will have the common if property) 
@@ -40,7 +40,7 @@ export interface Question {
   validate?: QuestionValidate
 }
 export interface QuestionValidate {
-  predicate:  (answer: Answer) => false | string | Promise<false | string>
+  predicate: (answer: Answer) => false | string | Promise<false | string>
   msgConfig?: ShowMessageQuestion
 }
 
@@ -150,27 +150,15 @@ export interface MessageBoxOptions {
 
 
 
-// const questionToElectronDialogOptionMap: any = {
-//   dialogType: 'type'
-// }
 /** because question properties collides with some electron dialogs options we always use questionToElectronDialogOption to convert a question to a dialog option when we call electron's dialog methods. */
-export function questionToElectronDialogOption(q: Question): any{
+export function questionToElectronDialogOption(q: Question): any {
   const result: any = {}
   for (const key in q) {
-    // const realKey = questionToElectronDialogOptionMap[key] 
-    // if (q.hasOwnProperty(key)) {
-      // if(questionToElectronDialogOptionMap[key]){
-      //   result[questionToElectronDialogOptionMap[key]] = (q as any)[key]
-      //   console.log('fixing ', {key, newKey: questionToElectronDialogOptionMap[key], val: (q as any)[key] })
-      // }
-      // else{
-        result[key] = (q as any)[key]
-      // }
-      // ;      
-    // }
-    result.type = result.dialogType
+    result[key] = (q as any)[questionToElectronDialogOptionMap[key] ? questionToElectronDialogOptionMap[key] : key]
   }
-
-  // console.log(result)
   return result
+}
+/** map with props of electron dialog options that had been modified cause collided with Question properties. format is QuestionProperty->ModifiedDialogProperty*/
+const questionToElectronDialogOptionMap: any = {
+  type: 'dialogType'
 }

@@ -1,4 +1,5 @@
 import * as shell from 'shelljs';
+import { ConfirmQuestion } from '../src/actions/confirm';
 import { SelectFilesAnswer, SelectFilesQuestion } from '../src/actions/selectFiles';
 import { ShowMessageQuestion } from '../src/actions/showMessage';
 import { create } from '../src/main';
@@ -7,8 +8,25 @@ import { ACTION_TYPE } from '../src/types';
 async function test() {
   const inquirer = create()
   await inquirer.start()
+
+  const confirmAnswer = await inquirer.prompt([
+    {
+      id: 'initialConfirm',
+      type: ACTION_TYPE.CONFIRM,
+      title: 'Confirm',
+      message: `
+
+*******************************************
+*    Are you sure you want to proceed     *
+*******************************************`
+    }] as [ConfirmQuestion])
+
+  if (!!confirmAnswer[0].value) {
+    return
+  }
+
+
   const answers = await inquirer.prompt([
-    
     {
       id: 'justAMessage',
       type: ACTION_TYPE.SHOW_MESSAGE,
@@ -18,7 +36,7 @@ async function test() {
 *******************************************
 *     Please, select exactly two files    *
 *******************************************`
-    } ,
+    },
 
     {
       id: 'files',
@@ -45,7 +63,7 @@ async function test() {
 * Good!, now select exactly two folders   *
 *******************************************`
     },
-    
+
     {
       id: 'folders', type: ACTION_TYPE.SELECT_FILES,
       title: 'Select a file where to move the class',
@@ -64,7 +82,7 @@ async function test() {
       }
     },
   ] as [ShowMessageQuestion, SelectFilesQuestion, ShowMessageQuestion, SelectFilesQuestion]
-)
+  )
 
 
   console.log(`answer: `, JSON.stringify(answers))

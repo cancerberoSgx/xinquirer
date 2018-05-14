@@ -7,13 +7,7 @@ export const confirmAction: ConfirmAction = {
   type: ACTION_TYPE.CONFIRM,
   execute: (host: Inquirer, config: ConfirmQuestion) => {
     return new Promise(resolve => {
-      // const defaultConfirmOptions: MessageBoxOptions = {
-      //   title: config.title || 'Confirm',
-      //   buttons: [config.okButton||'OK', config.cancelButton||'Cancel'],
-      //   message: config.message || 'Do you really want to confirm this generic stuff?'
-      // }
       config.buttons = config.buttons || [config.okButton||'OK', config.cancelButton||'Cancel']
-      // const finalMessageBoxOptions = Object.assign({}, defaultConfirmOptions, config.dialog||{})
       if(config.title){
         host.getBrowserWindow().setTitle(config.title)
       }
@@ -29,14 +23,8 @@ export const confirmAction: ConfirmAction = {
  *  * use `dialog.type` to customize the dialog icon 
  */
 export interface ConfirmQuestion extends Question, MessageBoxOptions {
-  // /** title of the dialog */
-  // title?: string
   okButton? : string
   cancelButton?: string
-  // /** Message to show to the user */
-  // message: string
-  // /** properties to pass directly when creating electron dialog */
-  // dialog: MessageBoxOptions
 }
 
 export interface ConfirmAnswer extends Answer {
