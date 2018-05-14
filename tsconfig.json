@@ -9,7 +9,7 @@
     "outDir": "./dist",
     "rootDir": ".",
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "declaration": true,
     "sourceMap": true,

@@ -4,7 +4,7 @@ import * as url from 'url'
 
 export function createWindow(): Promise<BrowserWindow> {
   return new Promise(resolve => {
-    let mainWindow: BrowserWindow
+    let mainWindow: BrowserWindow|null
     function createWindow_() {
       mainWindow = new BrowserWindow({  // Create the browser window.
         width: 800, height: 600, alwaysOnTop: true, opacity: 0.1

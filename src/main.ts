@@ -1,7 +1,7 @@
 import { BrowserWindow, MessageBoxOptions } from "electron";
 import 'hard-rejection/register';
 import mapSeries from 'p-map-series';
-import { getAllActions } from "./actions/actionRegisterer";
+import { getAllActions } from "./actions/actionManager";
 import { ShowMessageQuestion } from "./actions/showMessage";
 import { createWindow } from "./createWindow";
 import { ACTION_TYPE, Action, Answer, Inquirer, Question } from "./types";
@@ -11,10 +11,19 @@ class InquirerImpl implements Inquirer {
   constructor(actions: Action<any, any>[]) {
     this.actions = actions
   }
-  private window: BrowserWindow
+  private window: BrowserWindow|undefined
   private actions: Action<any, any>[]
   private started = false
 
+  getBrowserWindow(): BrowserWindow{
+    if(! this.window){
+      throw new Error('You must call start() before getBrowserWindow()')
+    }
+    else {
+      return this.window
+    }
+  }
+  
   async start() {
     this.window = await createWindow()
     this.started = true
@@ -22,7 +31,7 @@ class InquirerImpl implements Inquirer {
   }
 
   stop(): Promise<void> {
-    this.window.close()
+    if(this.window) {this.window.close()}
     return Promise.resolve()
   }
 

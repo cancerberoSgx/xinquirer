@@ -1,5 +1,5 @@
-import { MessageBoxOptions, dialog } from "electron";
-import { ACTION_TYPE, Action, Answer, Inquirer, Question } from "../types";
+import { dialog } from 'electron';
+import { ACTION_TYPE, Action, Answer, Inquirer, Question, MessageBoxOptions } from '../types';
 
 export const showMessageAction: ShowMessageAction = {
 
@@ -12,11 +12,11 @@ export const showMessageAction: ShowMessageAction = {
    * 
    * @param config From: electron's showOpenDialog method documentation: 
    * 
-   * "Shows a message box, it will block the process until the message box is closed.
+   * 'Shows a message box, it will block the process until the message box is closed.
    * It returns the index of the clicked button. The browserWindow argument allows
    * the dialog to attach itself to a parent window, making it modal. If a callback
    * is passed, the dialog will not block the process. The API call will be
-   * asynchronous and the result will be passed via callback(response)"
+   * asynchronous and the result will be passed via callback(response)'
    */
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
     return new Promise(resolve => {
@@ -25,11 +25,14 @@ export const showMessageAction: ShowMessageAction = {
         buttons: ['OK'],
         message: 'Generic message'
       }
-      config.dialog = config.dialog || defaultShowMessageOptions
-      const finalConfig = Object.assign({}, { dialog: defaultShowMessageOptions }, config)
-      finalConfig.dialog = Object.assign({}, defaultShowMessageOptions, config.dialog)
-      console.log(finalConfig.dialog)
-      const id = dialog.showMessageBox(finalConfig.dialog, (buttonPressed: number, checkboxChecked: boolean) => {
+      // config.dialog = config.dialog || defaultShowMessageOptions
+      // const finalConfig = Object.assign({}, { dialog: defaultShowMessageOptions }, config)
+      const finalMessageBoxOptions = Object.assign({}, defaultShowMessageOptions, config.dialog||{})
+      if(finalMessageBoxOptions.title){
+        host.getBrowserWindow().setTitle(finalMessageBoxOptions.title)
+      }
+      // console.log(finalConfig.dialog)
+      const id = dialog.showMessageBox(host.getBrowserWindow(), finalMessageBoxOptions, (buttonPressed: number, checkboxChecked: boolean) => {
         resolve({ id: config.id, value: {buttonPressed, checkboxChecked} })
       })
     })

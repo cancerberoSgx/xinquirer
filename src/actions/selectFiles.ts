@@ -1,5 +1,5 @@
-import { ACTION_TYPE, Inquirer, Action, Question, Answer } from "../types";
-import { dialog, OpenDialogOptions } from "electron";
+import { dialog, MessageBoxOptions } from 'electron';
+import { ACTION_TYPE, Action, Answer, Inquirer, Question, QuestionValidate, OpenDialogOptions } from '../types';
 
 export const selectFilesAction: SelectFilesAction = {
 
@@ -21,28 +21,49 @@ export const selectFilesAction: SelectFilesAction = {
     */
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
-      const selection: string[] = dialog.showOpenDialog(
-        config.dialog || defaultOpenDialogOptions,
-        (files: string[], bookmarks: string[]) => {
-          resolve({ id: config.id, value: {files, bookmarks} })
-        })
+
+    const finalDialogOptions = Object.assign({}, {
+      properties: ['openFile', 'multiSelections'],
+      title: 'Choose the target file',
+      filters: []
+    }, config.dialog||{})
+
+    host.getBrowserWindow().setTitle(finalDialogOptions.title)
+
+    const selection: string[] = dialog.showOpenDialog(host.getBrowserWindow(),
+      finalDialogOptions,
+      (files: string[], bookmarks: string[]) => {
+        resolve({ id: config.id, value: {files, bookmarks} })
+      })
     })
   }
 }
 
-const defaultOpenDialogOptions: OpenDialogOptions = {
-  properties: ['openFile', 'multiSelections'],
-  title: 'Choose the target file',
-  filters: []
-}
 
 export interface SelectFilesQuestion extends Question {
   /** properties to pass directly when creating electron dialog */
   dialog?: OpenDialogOptions
+
+  /**
+   * Validate the answer, if not valid return a string with a hint explaining the user why. 
+   * If valid return false. You can return a promise resolved with the same semantic for main the validation async
+   */
+  validate?: SelectFilesQuestionValidate
+}
+export interface SelectFilesQuestionValidate extends QuestionValidate {
+  predicate:  (answer: SelectFilesAnswer) => false | string | Promise<false | string>
+  dialogOptions?: MessageBoxOptions
 }
 
+
 export interface SelectFilesAnswer extends Answer {
-  value: {files: string[], bookmarks: string[]}
+  value?: {
+    /**
+    * if user cancel pressing ESC files will be undefined
+    */
+    files?: string[], 
+    bookmarks?: string[]
+  }
 }
 export interface SelectFilesAction extends Action<SelectFilesQuestion, SelectFilesAnswer> {
   execute: (host: Inquirer, config: SelectFilesQuestion) => Promise<SelectFilesAnswer>

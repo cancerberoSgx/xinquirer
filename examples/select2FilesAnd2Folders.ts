@@ -1,7 +1,8 @@
+import * as shell from 'shelljs';
+import { SelectFilesAnswer, SelectFilesQuestion } from '../src/actions/selectFiles';
 import { ShowMessageQuestion } from '../src/actions/showMessage';
 import { create } from '../src/main';
 import { ACTION_TYPE } from '../src/types';
-import { SelectFilesQuestion } from '../src/actions/selectFiles';
 
 async function test() {
   const inquirer = create()
@@ -17,7 +18,6 @@ async function test() {
  *******************************************
  *     Please, select exactly two files    *
  *******************************************`
-
       }
     } as ShowMessageQuestion,
 
@@ -29,8 +29,11 @@ async function test() {
         properties: ['openFile', 'multiSelections']
       },
       validate: {
-        predicate: (answer) => {
-          return answer.value.files.length === 2 ? false : 'ERROR: You must select exactly two files. \n\nTIP: press ctrl+click to select multiple files'
+        predicate: (answer: SelectFilesAnswer) => {
+          if (!answer.value || !answer.value.files || answer.value.files.length !== 2 ||
+            answer.value.files.find(f => !shell.test('-f', f))) {
+            return 'ERROR: You must select exactly two files. \n\nTIP: press ctrl+click to select multiple files'
+          }
         }
       }
     } as SelectFilesQuestion,
@@ -43,11 +46,11 @@ async function test() {
         message: `
 
  *******************************************
- *     Now, select exactly two folders     *
+ * Good!, now select exactly two folders   *
  *******************************************`
-
       }
-    } as ShowMessageQuestion,
+    },
+    
     {
       id: 'folders', type: ACTION_TYPE.SELECT_FILES,
       dialog: {
@@ -56,11 +59,14 @@ async function test() {
       },
       validate: {
         predicate: (answer) => {
-          return answer.value.files.length === 2 ? false : 'ERROR: You must select exactly two folders. \n\nTIP: press ctrl+click to select multiple files'
-        }, 
+          if (!answer.value || !answer.value.files || answer.value.files.length !== 2 ||
+            answer.value.files.find(f => !shell.test('-d', f))) {
+            return 'ERROR: You must select exactly two folders. \n\nTIP: press ctrl+click to select multiple files'
+          }
+        },
         dialogOptions: {
-          buttonLabel: 'I will do it better', 
-          message: 'ERROR: You must select exactly two folders. \n\nTIP: press ctrl+click to select multiple files'
+          buttonLabel: 'I will do it better',
+          message: ''
         }
       }
     } as SelectFilesQuestion,

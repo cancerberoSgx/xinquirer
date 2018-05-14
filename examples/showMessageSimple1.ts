@@ -7,7 +7,8 @@ async function test() {
   await inquirer.start()
   const answers = await inquirer.prompt([
     {
-      id: 'justAMessage', type: ACTION_TYPE.SHOW_MESSAGE, dialog: {
+      id: 'justAMessage', type: ACTION_TYPE.SHOW_MESSAGE, 
+      dialog: {
         title: 'Select 2 files',
         message: 'You win!',
         buttons: ['button1', 'button2', 'button3']
