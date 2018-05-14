@@ -4,6 +4,5 @@ node_modules
 # Ignore Rush temporary files
 /common/temp/**
 
-dist
 *.log
 tmp
