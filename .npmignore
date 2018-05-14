@@ -2,5 +2,11 @@ node_modules
 package-deps.json
 *.log
 doc-assets
+docs
+examples
 tmp
+src
+typedoc.ts
+TODO.md
+.vscode
 spec

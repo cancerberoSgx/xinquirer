@@ -11,23 +11,19 @@ async function test() {
     {
       id: 'justAMessage',
       type: ACTION_TYPE.SHOW_MESSAGE,
-      dialog: {
-        title: 'Select 2 files',
-        message: `
+      title: 'Select 2 files',
+      message: `
 
- *******************************************
- *     Please, select exactly two files    *
- *******************************************`
-      }
-    } as ShowMessageQuestion,
+*******************************************
+*     Please, select exactly two files    *
+*******************************************`
+    } ,
 
     {
       id: 'files',
       type: ACTION_TYPE.SELECT_FILES,
-      dialog: {
-        title: 'Select a file where to move the class',
-        properties: ['openFile', 'multiSelections']
-      },
+      title: 'Select a file where to move the class',
+      properties: ['openFile', 'multiSelections'],
       validate: {
         predicate: (answer: SelectFilesAnswer) => {
           if (!answer.value || !answer.value.files || answer.value.files.length !== 2 ||
@@ -36,27 +32,23 @@ async function test() {
           }
         }
       }
-    } as SelectFilesQuestion,
+    },
 
     {
       id: 'justAMessage2',
       type: ACTION_TYPE.SHOW_MESSAGE,
-      dialog: {
-        title: 'Select 2 folders',
-        message: `
+      title: 'Select 2 folders',
+      message: `
 
- *******************************************
- * Good!, now select exactly two folders   *
- *******************************************`
-      }
+*******************************************
+* Good!, now select exactly two folders   *
+*******************************************`
     },
     
     {
       id: 'folders', type: ACTION_TYPE.SELECT_FILES,
-      dialog: {
-        title: 'Select a file where to move the class',
-        properties: ['openDirectory', 'multiSelections']
-      },
+      title: 'Select a file where to move the class',
+      properties: ['openDirectory', 'multiSelections'],
       validate: {
         predicate: (answer) => {
           if (!answer.value || !answer.value.files || answer.value.files.length !== 2 ||
@@ -65,12 +57,15 @@ async function test() {
           }
         },
         dialogOptions: {
-          buttonLabel: 'I will do it better',
-          message: ''
+          buttons: ['I will do it better'],
+          message: '' // is mandatory that's why we need it
         }
       }
-    } as SelectFilesQuestion,
-  ])
+    },
+  ] as [ShowMessageQuestion, SelectFilesQuestion, ShowMessageQuestion, SelectFilesQuestion]
+)
+
+
   console.log(`answer: `, JSON.stringify(answers))
   await inquirer.stop()
 }

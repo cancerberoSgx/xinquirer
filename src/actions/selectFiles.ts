@@ -1,5 +1,5 @@
-import { dialog, MessageBoxOptions } from 'electron';
-import { ACTION_TYPE, Action, Answer, Inquirer, Question, QuestionValidate, OpenDialogOptions } from '../types';
+import { dialog } from 'electron';
+import { ACTION_TYPE, Action, Answer, Inquirer, Question, QuestionValidate, OpenDialogOptions, MessageBoxOptions } from '../types';
 
 export const selectFilesAction: SelectFilesAction = {
 
@@ -22,16 +22,17 @@ export const selectFilesAction: SelectFilesAction = {
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
 
-    const finalDialogOptions = Object.assign({}, {
-      properties: ['openFile', 'multiSelections'],
-      title: 'Choose the target file',
-      filters: []
-    }, config.dialog||{})
+    // const finalDialogOptions = Object.assign({}, {
+    //   properties: ['openFile', 'multiSelections'],
+    //   title: 'Choose the target file',
+    //   filters: []
+    // }, config)
 
-    host.getBrowserWindow().setTitle(finalDialogOptions.title)
+    if(config.title){
+      host.getBrowserWindow().setTitle(config.title)
+    }
 
-    const selection: string[] = dialog.showOpenDialog(host.getBrowserWindow(),
-      finalDialogOptions,
+    const selection: string[] = dialog.showOpenDialog(host.getBrowserWindow(), config,
       (files: string[], bookmarks: string[]) => {
         resolve({ id: config.id, value: {files, bookmarks} })
       })
@@ -40,9 +41,9 @@ export const selectFilesAction: SelectFilesAction = {
 }
 
 
-export interface SelectFilesQuestion extends Question {
+export interface SelectFilesQuestion extends Question, OpenDialogOptions {
   /** properties to pass directly when creating electron dialog */
-  dialog?: OpenDialogOptions
+  // dialog?: OpenDialogOptions
 
   /**
    * Validate the answer, if not valid return a string with a hint explaining the user why. 

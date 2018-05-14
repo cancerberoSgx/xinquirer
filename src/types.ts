@@ -20,13 +20,14 @@ export interface Inquirer {
    * When all are answered return the array of answers (questions and answers will have the common if property) 
    */
   prompt(questions: Array<Question>): Promise<Answer[]>
-  // prompt(questions: Array<AllQuestionTypes>): Promise<Answer[]>
+  // prompt(questions: Array<Question>): Promise<Answer[]>
 
 }
 
 export enum ACTION_TYPE {
   SELECT_FILES = 'select-files',
-  SHOW_MESSAGE = 'show-message'
+  SHOW_MESSAGE = 'show-message',
+  CONFIRM = "confirm"
 }
 
 export interface Question {
@@ -44,7 +45,7 @@ export interface QuestionValidate {
 }
 
 export interface Action<Q extends Question, A extends Answer> {
-  type: ACTION_TYPE
+  type: ACTION_TYPE // TODO: for supporting  external actions we should leave this to string
   execute: (host: Inquirer, question: Q) => Promise<Answer>
 }
 

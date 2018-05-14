@@ -1,11 +1,11 @@
-import { BrowserWindow, MessageBoxOptions } from "electron";
+import { BrowserWindow } from 'electron';
 import 'hard-rejection/register';
 import mapSeries from 'p-map-series';
-import { getAllActions } from "./actions/actionManager";
-import { ShowMessageQuestion } from "./actions/showMessage";
-import { createWindow } from "./createWindow";
-import { ACTION_TYPE, Action, Answer, Inquirer, Question } from "./types";
-import { SelectFilesQuestion } from "./actions/selectFiles";
+import { getAllActions } from './actions/actionManager';
+import { ShowMessageQuestion } from './actions/showMessage';
+import { createWindow } from './createWindow';
+import { ACTION_TYPE, Action, Answer, Inquirer, Question, MessageBoxOptions } from './types';
+import { SelectFilesQuestion } from './actions/selectFiles';
 
 class InquirerImpl implements Inquirer {
   constructor(actions: Action<any, any>[]) {
@@ -63,11 +63,11 @@ class InquirerImpl implements Inquirer {
   }
 
   private showInvalidMessage(message: string, dialogOptions?: MessageBoxOptions): Promise<Answer[]> {
-    const finalDialogOptions = Object.assign({}, {
+    const finalDialogOptions = Object.assign({}, dialogOptions||{}, {
       title: 'Invalid Selection',
       message: message, 
       type: 'error'
-    }, dialogOptions||{})
+    })
     return this.prompt([
       {
         id: 'justAMessage',

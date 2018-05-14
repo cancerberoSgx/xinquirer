@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp -rf src/assets dist/src",
+    "build": "rm -rf dist && tsc && cp -rf src/assets dist/src",
     "start1": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",
     "run1": "node electron dist/examples/selectFileSimpleExample.js",
     "start": "electron",
@@ -28,7 +28,8 @@
     "@types/shelljs": "^0.7.9",
     "shelljs": "^0.8.2",
     "typedoc": "^0.11.1",
-    "typescript": "^2.8.3"
+    "typescript": "^2.8.3", 
+    "yargs-parser": "^10.0.0"
   },
   "keywords": [
     "inquirer",
