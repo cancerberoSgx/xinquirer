@@ -22,13 +22,21 @@ export const selectColorAction: SelectColorAction = {
         protocol: 'file:'
       }))
       child.once('ready-to-show', () => {
+        // const size = await child.webContents.executeJavaScript('document.querySelector(".sp-container").getBoundingClientRect()')
+        child.setSize(500, 350, false)
         child.show()
+      })
+      child.on('closed', function () {
+        child = null
+        resolve({ id: config.id, value: null})
       })
       if (config.title) {
         inquirer.getBrowserWindow().setTitle(config.title)
       }
       colorSelectionEmitter.on('color-selected', (color:string)=>{
         resolve({ id: config.id, value: color})
+        child.close()
+        child=null
       })
     })
   }

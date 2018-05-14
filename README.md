@@ -2,24 +2,21 @@
 
 like Inquirer.js but for X. Ask user questions showing annoying dialogs on top of the current window. based on electron. node.js API.
 
-Very *WIP*
+**WIP**
 
 
 # Widgets supported now:
 
  * selectFiles
  * showMessage 
+ * confirm
+ * selectColor
 
 # objectives: 
 
- * file chooser
- * confirm
- * input
+ * basic components
+ * 100% offline
  * support linux windows and mac
-
-### secondary
-
- * option list
 
 
 # Run examples

@@ -12,15 +12,13 @@ export function createWindow(): Promise<BrowserWindow> {
     let mainWindow: BrowserWindow | null
     function createWindow_() {
       mainWindow = new BrowserWindow({  // Create the browser window.
-        width: 800, height: 600, alwaysOnTop: true, frame: true
-        // , show: false
+        width: 100, height: 100, alwaysOnTop: true
       })
       // and load the index.html of the app.
       mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'assets', 'index.html'),
         protocol: 'file:'
       }))
-      // commented the next since dont have any effect
       // Emitted when the window is closed.
       mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
@@ -30,8 +28,6 @@ export function createWindow(): Promise<BrowserWindow> {
     }
     // This method will be called when Electron has finished initialization and is ready to create browser windows. Some APIs can only be used after this event occurs.
     app.on('ready', createWindow_)
-    // commented the next because we don't want to quit() the app no matter if they closed the windows or not. we will be shotdown from main,js when user say so
-    // 
     // Quit when all windows are closed.
     app.on('window-all-closed', function () {
       // On OS X it is common for applications and their menu bar to stay active until the user quits explicitly with Cmd + Q
