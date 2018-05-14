@@ -8,6 +8,7 @@ async function test() {
   const inquirer = create()
   await inquirer.start()
   const answers = await inquirer.prompt([
+    
     {
       id: 'justAMessage',
       type: ACTION_TYPE.SHOW_MESSAGE,
@@ -56,9 +57,9 @@ async function test() {
             return 'ERROR: You must select exactly two folders. \n\nTIP: press ctrl+click to select multiple files'
           }
         },
-        dialogOptions: {
-          buttons: ['I will do it better'],
-          message: '' // is mandatory that's why we need it
+        msgConfig: {
+          button: 'I will do it better',
+          message: 'ERROR: You must select exactly two folders. \n\nTIP: press ctrl+click to select multiple files'
         }
       }
     },

@@ -1,5 +1,5 @@
 import { dialog } from 'electron';
-import { ACTION_TYPE, Action, Answer, Inquirer, Question, MessageBoxOptions } from '../types';
+import { ACTION_TYPE, Action, Answer, Inquirer, Question, MessageBoxOptions, questionToElectronDialogOption } from '../types';
 
 // TODO: confirm could be configurable: instead of two buttons show the checkbox and only one
 
@@ -7,16 +7,17 @@ export const confirmAction: ConfirmAction = {
   type: ACTION_TYPE.CONFIRM,
   execute: (host: Inquirer, config: ConfirmQuestion) => {
     return new Promise(resolve => {
-      const defaultConfirmOptions: MessageBoxOptions = {
-        title: config.title || 'Confirm',
-        buttons: [config.okButton||'OK', config.cancelButton||'Cancel'],
-        message: config.message || 'Do you really want to confirm this generic stuff?'
+      // const defaultConfirmOptions: MessageBoxOptions = {
+      //   title: config.title || 'Confirm',
+      //   buttons: [config.okButton||'OK', config.cancelButton||'Cancel'],
+      //   message: config.message || 'Do you really want to confirm this generic stuff?'
+      // }
+      config.buttons = config.buttons || [config.okButton||'OK', config.cancelButton||'Cancel']
+      // const finalMessageBoxOptions = Object.assign({}, defaultConfirmOptions, config.dialog||{})
+      if(config.title){
+        host.getBrowserWindow().setTitle(config.title)
       }
-      const finalMessageBoxOptions = Object.assign({}, defaultConfirmOptions, config.dialog||{})
-      if(finalMessageBoxOptions.title){
-        host.getBrowserWindow().setTitle(finalMessageBoxOptions.title)
-      }
-      dialog.showMessageBox(host.getBrowserWindow(), finalMessageBoxOptions, (buttonPressed: number, checkboxChecked: boolean) => {
+      dialog.showMessageBox(host.getBrowserWindow(), questionToElectronDialogOption(config), (buttonPressed: number, checkboxChecked: boolean) => {
         resolve({ id: config.id, value: buttonPressed===0 })
       })
     })
@@ -27,17 +28,15 @@ export const confirmAction: ConfirmAction = {
  *  * dialog.message is the text of in the dialog to show to the user
  *  * use `dialog.type` to customize the dialog icon 
  */
-export interface ConfirmQuestion extends Question {
-  /** title of the dialog */
-  title?: string
-  /** confirm and cancel buttons labels. Order is important: first is the 'confirm' button , second is the 'cancel' button */
+export interface ConfirmQuestion extends Question, MessageBoxOptions {
+  // /** title of the dialog */
+  // title?: string
   okButton? : string
   cancelButton?: string
-  // ?: [string, string]
-  /** Message to show to the user */
-  message: string
-  /** properties to pass directly when creating electron dialog */
-  dialog: MessageBoxOptions
+  // /** Message to show to the user */
+  // message: string
+  // /** properties to pass directly when creating electron dialog */
+  // dialog: MessageBoxOptions
 }
 
 export interface ConfirmAnswer extends Answer {

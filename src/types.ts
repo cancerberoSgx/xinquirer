@@ -41,7 +41,7 @@ export interface Question {
 }
 export interface QuestionValidate {
   predicate:  (answer: Answer) => false | string | Promise<false | string>
-  dialogOptions?: MessageBoxOptions
+  msgConfig?: ShowMessageQuestion
 }
 
 export interface Action<Q extends Question, A extends Answer> {
@@ -89,7 +89,7 @@ export interface MessageBoxOptions {
    * displays the same icon as "info", unless you set an icon using the "icon"
    * option. On macOS, both "warning" and "error" display the same warning icon.
    */
-  type?: string;
+  dialogType?: string; // CHANGED FROM ORIGINAL because it collided with Question.type!!!
   /**
    * Array of texts for buttons. On Windows, an empty array will result in one button
    * labeled "OK".
@@ -146,4 +146,31 @@ export interface MessageBoxOptions {
    * Linux.
    */
   normalizeAccessKeys?: boolean;
+}
+
+
+
+// const questionToElectronDialogOptionMap: any = {
+//   dialogType: 'type'
+// }
+/** because question properties collides with some electron dialogs options we always use questionToElectronDialogOption to convert a question to a dialog option when we call electron's dialog methods. */
+export function questionToElectronDialogOption(q: Question): any{
+  const result: any = {}
+  for (const key in q) {
+    // const realKey = questionToElectronDialogOptionMap[key] 
+    // if (q.hasOwnProperty(key)) {
+      // if(questionToElectronDialogOptionMap[key]){
+      //   result[questionToElectronDialogOptionMap[key]] = (q as any)[key]
+      //   console.log('fixing ', {key, newKey: questionToElectronDialogOptionMap[key], val: (q as any)[key] })
+      // }
+      // else{
+        result[key] = (q as any)[key]
+      // }
+      // ;      
+    // }
+    result.type = result.dialogType
+  }
+
+  // console.log(result)
+  return result
 }

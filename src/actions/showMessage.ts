@@ -1,5 +1,5 @@
 import { dialog } from 'electron';
-import { ACTION_TYPE, Action, Answer, Inquirer, Question, MessageBoxOptions } from '../types';
+import { ACTION_TYPE, Action, Answer, Inquirer, MessageBoxOptions, Question, questionToElectronDialogOption } from '../types';
 
 export const showMessageAction: ShowMessageAction = {
   type: ACTION_TYPE.SHOW_MESSAGE,
@@ -11,16 +11,16 @@ export const showMessageAction: ShowMessageAction = {
    */
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
     return new Promise(resolve => {
-      const defaultShowMessageOptions: MessageBoxOptions = {
-        title: config.title || 'Message',
-        buttons: [config.button || 'OK'],
-        message: config.message || 'Generic message'
+      // const defaultShowMessageOptions: MessageBoxOptions = {
+        config.title = config.title || 'Message',
+        config.buttons = config.buttons|| [config.button || 'OK'],
+        config.message = config.message || 'Generic message'
+      // }
+      // const finalMessageBoxOptions = Object.assign({}, questionToElectronDialogOption(config), config.dialog || {})
+      if (config.title) {
+        host.getBrowserWindow().setTitle(config.title)
       }
-      const finalMessageBoxOptions = Object.assign({}, defaultShowMessageOptions, config.dialog || {})
-      if (finalMessageBoxOptions.title) {
-        host.getBrowserWindow().setTitle(finalMessageBoxOptions.title)
-      }
-      dialog.showMessageBox(host.getBrowserWindow(), finalMessageBoxOptions, (buttonPressed: number, checkboxChecked: boolean) => {
+      dialog.showMessageBox(host.getBrowserWindow(), questionToElectronDialogOption(config), (buttonPressed: number, checkboxChecked: boolean) => {
         resolve({ id: config.id, value: { buttonPressed, checkboxChecked } })
       })
     })
@@ -31,10 +31,10 @@ export const showMessageAction: ShowMessageAction = {
  *  * dialog.message is the text of in the dialog to show to the user
  *  * use `dialog.type` to customize the dialog icon 
  */
-export interface ShowMessageQuestion extends Question {
+export interface ShowMessageQuestion extends Question, MessageBoxOptions {
   /** title of the dialog */
   title?: string
-  /** confirm and cancel buttons labels. Order is important: first is the 'confirm' button , second is the 'cancel' button */
+  /** button label */
   button?: string
   /** Message to show to the user */
   message: string

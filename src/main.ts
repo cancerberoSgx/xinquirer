@@ -52,8 +52,8 @@ class InquirerImpl implements Inquirer {
         invalid = false
         if (question.validate && question.validate.predicate) {
           invalid = await question.validate.predicate(answer)
-          if (invalid) {
-            await this.showInvalidMessage(invalid, question.validate.dialogOptions)
+          if (invalid){//typeof invalid === 'string') {
+            await this.showInvalidMessage(invalid, question.validate.msgConfig)
           }
         }
       } while (invalid);
@@ -62,24 +62,28 @@ class InquirerImpl implements Inquirer {
     return results
   }
 
-  private showInvalidMessage(message: string, dialogOptions?: MessageBoxOptions): Promise<Answer[]> {
-    const finalDialogOptions = Object.assign({}, dialogOptions||{}, {
+  private showInvalidMessage(message: string, dialogOptions?: ShowMessageQuestion): Promise<Answer[]> {
+    if(dialogOptions){
+      dialogOptions.message = message
+    }
+    const finalDialogOptions = Object.assign({}, {
       title: 'Invalid Selection',
       message: message, 
       type: 'error'
-    })
+    }, dialogOptions||{})
     return this.prompt([
       {
         id: 'justAMessage',
         type: ACTION_TYPE.SHOW_MESSAGE,
-        dialog: finalDialogOptions
+        dialog: finalDialogOptions,
+        message: message, 
       } as ShowMessageQuestion
     ])
   }
 }
 
-
 export const create = (): Inquirer => {
   const instance = new InquirerImpl(getAllActions())
   return instance
 }
+
