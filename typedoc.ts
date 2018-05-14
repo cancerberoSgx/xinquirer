@@ -1,11 +1,6 @@
 module.exports = {
   src: [
-    './dist/src/types.d.ts',
-    './dist/src/index.d.ts',
-    './dist/src/actions/showMessage.d.ts',
-    './dist/src/actions/selectFiles.d.ts',
-    './dist/src/actions/confirm.d.ts',
-    './dist/src/actions/selectColor.d.ts',
+    './types/typings.d.ts',
   ],
   "mode": 'modules',
   'includeDeclarations': true,

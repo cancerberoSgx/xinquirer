@@ -1,5 +1,8 @@
 # TODO 
  
+(prioritized)
+
+ * see the way of generate all declarations into a sinle file so user can import safer/easily - after that release the next version 0.0.4
  * default values 
  * enhancement - question property that allows to not execute that step according to some predicate and proceed with the next. predicate receive current answersr. 
  * input inputType validates but tooltip not shown

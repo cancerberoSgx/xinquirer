@@ -1,7 +1,7 @@
 
 
 
-import { create } from "..";
+import { create } from "../main";
 import { writeFileSync, readFileSync } from "fs";
 import { resolve } from "path";
 

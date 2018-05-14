@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const __1 = require("..");
+const main_1 = require("../main");
 const fs_1 = require("fs");
 const path_1 = require("path");
 // example cli
@@ -9,7 +9,7 @@ const path_1 = require("path");
 // xinquirer --configFile questions1.js --out answers.json
 const args = require('yargs-parser')(process.argv.slice(2));
 async function main() {
-    const tool = __1.create();
+    const tool = main_1.create();
     const questions = args2Questions();
     await tool.start();
     const answers = await tool.prompt(questions);

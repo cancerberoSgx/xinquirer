@@ -1,37 +1,45 @@
 {
   "name": "xinquirer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Like Inquirer.js but for with dialog windows. node.js API and CLI to to ask user to enter data, dialogs on top of the current window.",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/src/main.js",
+  "typings": "types/typings.d.ts",
   "bin": "bin/xinquirer.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -rf src/assets dist/src",
-    "start1": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",
-    "run1": "node electron dist/examples/selectFileSimpleExample.js",
     "start": "electron",
-    "prepare": "npm run build",
-    "doc": "typedoc --options typedoc.ts",
+    "prepare": "npm run build && npm run declarations",
+    "doc": "npm run declarations && typedoc --options typedoc.ts",
     "clean": "rm -rf docs dist",
-    "all": "npm run clean && npm install && npm run build && npm run doc"
+    "all": "npm run clean && npm install &&  npm run doc",
+    "declarations": "npm run build && ts-node scripts/concat-declarations.ts"
   },
   "author": "Sebastián Gurin",
   "license": "ISC",
   "dependencies": {
     "electron": "^2.0.0",
     "hard-rejection": "^1.0.0",
-    "p-map-series": "^1.0.0"
+    "p-map-series": "^1.0.0",
+    "@types/electron": "^1.6.10",
+    "@types/node": "^10.0.8"
   },
   "devDependencies": {
-    "@types/electron": "^1.6.10",
-    "@types/node": "^10.0.8",
+    "@types/jasmine": "^2.8.7",
     "@types/p-map-series": "^1.0.1",
     "@types/shelljs": "^0.7.9",
+    "glob": "^7.1.2",
+    "jasmine": "^3.1.0",
     "shelljs": "^0.8.2",
+    "ts-node": "^6.0.3",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.3",
     "yargs-parser": "^10.0.0"
   },
+  "files": [
+    "dist",
+    "bin",
+    "types"
+  ],
   "keywords": [
     "inquirer",
     "electron",
@@ -45,5 +53,6 @@
     "desktop",
     "node.js",
     "dialog"
-  ]
+  ],
+  "repository": "https://github.com/cancerberoSgx/xinquirer"
 }

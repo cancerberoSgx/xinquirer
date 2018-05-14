@@ -10,3 +10,6 @@
  * input
 
 # 0.0.3
+ * fix npm install
+
+# 0.0.4
