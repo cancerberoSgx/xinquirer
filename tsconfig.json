@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "declaration": true,
     "sourceMap": true,
+    "preserveConstEnums": true
   },
   "include": [
     "src",

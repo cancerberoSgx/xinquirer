@@ -21,21 +21,11 @@ export const selectFilesAction: SelectFilesAction = {
     */
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
-      // let callbackCalled = false
-
       const selection: string[] = dialog.showOpenDialog(
         config.dialog || defaultOpenDialogOptions,
         (files: string[], bookmarks: string[]) => {
-          // EX TODO: FALSA ALARMA pero dej el cartel TODO investigate. possible electron issue . this callback doesn't seem to work - leave resolve just in case - seems to be an issue (according to docs it should pass). TODO investigate
-          // console.log('callback called');
-          
-          // callbackCalled = true
           resolve({ id: config.id, value: {files, bookmarks} })
         })
-      // if (!callbackCalled) {
-      //   console.log('callback cNOT alled');
-      //   resolve({ id: config.id, value: selection })
-      // }
     })
   }
 }
@@ -49,8 +39,6 @@ const defaultOpenDialogOptions: OpenDialogOptions = {
 export interface SelectFilesQuestion extends Question {
   /** properties to pass directly when creating electron dialog */
   dialog?: OpenDialogOptions
-  // /** calls  showSaveDialog instead of showOpenDialog - TODO not supported yet */
-  // openSaveDialog?: boolean
 }
 
 export interface SelectFilesAnswer extends Answer {

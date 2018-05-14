@@ -1,21 +1,20 @@
-// import 'loud-rejection/register';
 import { ACTION_TYPE } from '../src/types'
-import {newInquirer} from '../src/main'
+import { create } from '../src/main'
+import { SelectFilesQuestion } from '../src/actions/selectFiles';
 
 async function test() {
-  const inquirer = newInquirer()
+  const inquirer = create()
   await inquirer.start()
   const answers = await inquirer.prompt([
-    { 
-      id: 'targetFile', type: ACTION_TYPE.SELECT_FILES, 
-      dialog: {title: 'Select a file where to move the class' }
-    }
+    {
+      id: 'targetFile', type: ACTION_TYPE.SELECT_FILES,
+      dialog: { 
+        title: 'Select a file where to move the class' 
+      }
+    } as SelectFilesQuestion
   ])
   console.log(`you choose file: `, JSON.stringify(answers))
   await inquirer.stop()
 }
-// try {
-  test()
-// } catch (error) {
-//   console.log(error, error.stack)
-// }
+
+test()

@@ -1,7 +1,7 @@
 {
   "name": "xinquirer",
   "version": "0.0.1",
-  "description": "like Inquirer.js but for X. Ask user questions showing annoying dialogs on top of the current window. based on electron. node.js API.",
+  "description": "Like Inquirer.js but for with dialog windows. node.js API and CLI to to ask user to enter data, dialogs on top of the current window.",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc && cp -rf src/assets dist/src",
@@ -9,6 +9,19 @@
     "run1": "node electron dist/examples/selectFileSimpleExample.js",
     "start": "electron",
     "prepare": "npm run build"
+  },
+  "author": "Sebastián Gurin",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^2.0.0",
+    "hard-rejection": "^1.0.0",
+    "p-map-series": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/node": "^10.0.8",
+    "@types/p-map-series": "^1.0.1",
+    "typescript": "^2.8.3"
   },
   "keywords": [
     "inquirer",
@@ -21,18 +34,7 @@
     "dialogs",
     "compatible",
     "desktop",
-    "node.js"
-  ],
-  "author": "Sebstián Gurin",
-  "license": "ISC",
-  "dependencies": {
-    "electron": "^2.0.0",
-    "p-map-series": "^1.0.0"
-  },
-  "devDependencies": {
-    "@types/electron": "^1.6.10",
-    "@types/node": "^10.0.8",
-    "@types/p-map-series": "^1.0.1",
-    "typescript": "^2.8.3"
-  }
+    "node.js",
+    "dialog"
+  ]
 }
