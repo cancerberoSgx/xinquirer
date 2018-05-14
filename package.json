@@ -1,6 +1,6 @@
 {
   "name": "xinquirer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Like Inquirer.js but for with dialog windows. node.js API and CLI to to ask user to enter data, dialogs on top of the current window.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
