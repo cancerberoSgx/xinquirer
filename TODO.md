@@ -1,2 +1,36 @@
- * select file: just to try: validator to force user to select a number of files of folders. 
+ * default values 
  * enhancement - question property that allows to not execute that step according to some predicate and proceed with the next. predicate receive current answersr. 
+
+ IDEAS
+
+  * https://electronjs.org/docs/tutorial/notifications
+  * https://electronjs.org/docs/tutorial/progress-bar
+  * https://electronjs.org/docs/tutorial/native-file-drag-drop
+  * read from clikblard (inquire) https://electronjs.org/docs/api/clipboard
+  * inquier descktop capture https://electronjs.org/docs/api/desktop-capturer
+
+
+
+  # notes
+
+create child windows
+  const {BrowserWindow} = require('electron')
+  
+  let child = new BrowserWindow({parent: top, modal: true, show: false})
+  child.loadURL('https://github.com')
+  child.once('ready-to-show', () => {
+    child.show()
+  })
+
+
+  https://electronjs.org/docs/api/remote
+  
+from server to browser
+  mainWindow.webContents.executeJavaScript('document.write("<p>sebskdfjhskjdfhksjdfhksjdhfksjdhfkjsdhf</p>")')
+
+
+
+from browsers to server
+const communication = require('electron').remote.require(path.join(__dirname, '..', 'communication'))
+communication.exported1('hello hello !!!')
+  

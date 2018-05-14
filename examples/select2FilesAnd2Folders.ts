@@ -21,8 +21,8 @@ async function test() {
 *******************************************`
     }] as [ConfirmQuestion])
 
-  if (!!confirmAnswer[0].value) {
-    return
+  if (!confirmAnswer[0].value) {
+    return await inquirer.stop()
   }
 
 

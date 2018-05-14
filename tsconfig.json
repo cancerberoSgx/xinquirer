@@ -9,7 +9,7 @@
     "outDir": "./dist",
     "rootDir": ".",
     "strict": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
     "declaration": true,

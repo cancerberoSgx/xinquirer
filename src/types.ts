@@ -27,7 +27,8 @@ export interface Inquirer {
 export enum ACTION_TYPE {
   SELECT_FILES = 'select-files',
   SHOW_MESSAGE = 'show-message',
-  CONFIRM = "confirm"
+  CONFIRM = "confirm", 
+  SELECT_COLOR = "select-color"
 }
 
 export interface Question {

@@ -1,13 +1,18 @@
-import { BrowserWindow, app, dialog } from 'electron'
-import * as path from 'path'
-import * as url from 'url'
+import { BrowserWindow, app } from 'electron';
+import * as path from 'path';
+import * as url from 'url';
+
+const {webFrame} = require('electron')
+  
+
+
 
 export function createWindow(): Promise<BrowserWindow> {
   return new Promise(resolve => {
-    let mainWindow: BrowserWindow|null
+    let mainWindow: BrowserWindow | null
     function createWindow_() {
       mainWindow = new BrowserWindow({  // Create the browser window.
-        width: 800, height: 600, alwaysOnTop: true, opacity: 0.1
+        width: 800, height: 600, alwaysOnTop: true, frame: true
         // , show: false
       })
       // and load the index.html of the app.
@@ -18,10 +23,10 @@ export function createWindow(): Promise<BrowserWindow> {
       // commented the next since dont have any effect
       // Emitted when the window is closed.
       mainWindow.on('closed', function () {
-      // Dereference the window object, usually you would store windows in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
+        // Dereference the window object, usually you would store windows in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
         mainWindow = null
       })
-    resolve(mainWindow)
+      resolve(mainWindow)
     }
     // This method will be called when Electron has finished initialization and is ready to create browser windows. Some APIs can only be used after this event occurs.
     app.on('ready', createWindow_)

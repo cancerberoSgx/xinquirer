@@ -2,9 +2,10 @@ import { Action, Answer, Question } from '../types';
 import { confirmAction } from './confirm';
 import { selectFilesAction } from './selectFiles';
 import { showMessageAction } from './showMessage';
+import { selectColorAction } from './selectColor';
 
 let actions: Action<any, any>[]
-const internalActions = [selectFilesAction, showMessageAction, confirmAction]
+const internalActions: Action<any,any>[] = [selectFilesAction, showMessageAction, confirmAction, selectColorAction]
 
 export function getAllActions(): Action<any, any>[] {
   if (!actions) {

@@ -11,12 +11,9 @@ export const showMessageAction: ShowMessageAction = {
    */
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
     return new Promise(resolve => {
-      // const defaultShowMessageOptions: MessageBoxOptions = {
         config.title = config.title || 'Message',
         config.buttons = config.buttons|| [config.button || 'OK'],
         config.message = config.message || 'Generic message'
-      // }
-      // const finalMessageBoxOptions = Object.assign({}, questionToElectronDialogOption(config), config.dialog || {})
       if (config.title) {
         host.getBrowserWindow().setTitle(config.title)
       }
