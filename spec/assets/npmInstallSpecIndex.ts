@@ -1,7 +1,4 @@
-import { ShowMessageQuestion } from '../src/actions/showMessage';
-import { create } from '../src/main';
-import { ACTION_TYPE } from '../src/types';
-import { InputQuestion } from '../src/actions/input';
+import {create, ACTION_TYPE, InputQuestion} from 'xinquirer'
 
 async function test() {
   const inquirer = create()

@@ -4,8 +4,6 @@ import { ACTION_TYPE, Action, Answer, Inquirer, Question, QuestionValidate, Open
 export const selectFilesAction: SelectFilesAction = {
 
   type: ACTION_TYPE.SELECT_FILES,
-
-
   execute: (host: Inquirer, config: SelectFilesQuestion) => {
     return new Promise(resolve => {
     if(config.title){

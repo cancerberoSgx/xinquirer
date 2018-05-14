@@ -1,6 +1,6 @@
 module.exports = {
   src: [
-    './types/typings.d.ts',
+    './dist/src/index.d.ts',
   ],
   "mode": 'modules',
   'includeDeclarations': true,

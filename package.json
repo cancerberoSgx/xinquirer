@@ -2,17 +2,17 @@
   "name": "xinquirer",
   "version": "0.0.4",
   "description": "Like Inquirer.js but for with dialog windows. node.js API and CLI to to ask user to enter data, dialogs on top of the current window.",
-  "main": "dist/src/main.js",
-  "typings": "types/typings.d.ts",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
   "bin": "bin/xinquirer.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -rf src/assets dist/src",
     "start": "electron",
-    "prepare": "npm run build && npm run declarations",
-    "doc": "npm run declarations && typedoc --options typedoc.ts",
+    "prepare": "npm run build",
+    "doc": "typedoc --options typedoc.ts",
     "clean": "rm -rf docs dist",
     "all": "npm run clean && npm install &&  npm run doc",
-    "declarations": "npm run build && ts-node scripts/concat-declarations.ts"
+    "test": "ts-node node_modules/.bin/jasmine "
   },
   "author": "Sebastián Gurin",
   "license": "ISC",
@@ -20,7 +20,6 @@
     "electron": "^2.0.0",
     "hard-rejection": "^1.0.0",
     "p-map-series": "^1.0.0",
-    "@types/electron": "^1.6.10",
     "@types/node": "^10.0.8"
   },
   "devDependencies": {

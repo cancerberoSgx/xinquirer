@@ -15,5 +15,8 @@
     "declaration": true,
     "sourceMap": true,
     "preserveConstEnums": true
-  }
+  },
+  "files": [
+    "./index.ts"
+  ]
 }
