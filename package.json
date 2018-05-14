@@ -4,6 +4,7 @@
   "description": "Like Inquirer.js but for with dialog windows. node.js API and CLI to to ask user to enter data, dialogs on top of the current window.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "bin": "bin/xinquirer.js",
   "scripts": {
     "build": "rm -rf dist && tsc && cp -rf src/assets dist/src",
     "start1": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",

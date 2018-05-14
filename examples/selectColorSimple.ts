@@ -5,6 +5,7 @@ import { SelectColorQuestion } from '../src/actions/selectColor';
 
 async function test() {
   const inquirer = create()
+  console.log('selectColor')
   await inquirer.start()
   const answers = await inquirer.prompt([
     {
