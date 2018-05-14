@@ -5,6 +5,23 @@ like Inquirer.js but for X. Ask user questions showing annoying dialogs on top o
 **WIP**
 
 
+# node.js API
+
+TODO. For now look at examples/select2FilesAnd2Folders
+
+# CLI
+
+```sh
+npm install -g xinquirer
+xinquirer --type select-color --message "Please select a color for your user" 
+xinquirer --configFile questions1.json --out answers.json
+xinquirer --configFile questions1.js --out answers.json
+```
+configFile could be json or .js. IF you want to validate inputs then you need to write js functions. 
+
+example: TODO. 
+
+
 # Widgets supported now:
 
  * selectFiles
