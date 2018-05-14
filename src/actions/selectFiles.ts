@@ -24,7 +24,7 @@ export const selectFilesAction: SelectFilesAction = {
       // let callbackCalled = false
 
       const selection: string[] = dialog.showOpenDialog(
-        config.openDialogOptions || defaultOpenDialogOptions,
+        config.dialog || defaultOpenDialogOptions,
         (files: string[], bookmarks: string[]) => {
           // EX TODO: FALSA ALARMA pero dej el cartel TODO investigate. possible electron issue . this callback doesn't seem to work - leave resolve just in case - seems to be an issue (according to docs it should pass). TODO investigate
           // console.log('callback called');
@@ -47,9 +47,10 @@ const defaultOpenDialogOptions: OpenDialogOptions = {
 }
 
 export interface SelectFilesQuestion extends Question {
-  openDialogOptions?: OpenDialogOptions
-  /** calls  showSaveDialog instead of showOpenDialog - TODO not supported yet */
-  openSaveDialog?: boolean
+  /** properties to pass directly when creating electron dialog */
+  dialog?: OpenDialogOptions
+  // /** calls  showSaveDialog instead of showOpenDialog - TODO not supported yet */
+  // openSaveDialog?: boolean
 }
 
 export interface SelectFilesAnswer extends Answer {

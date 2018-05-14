@@ -19,14 +19,14 @@ export interface Inquirer {
 }
 
 export enum ACTION_TYPE {
-  SELECT_FILES,
-  SHOW_MESSAGE
+  SELECT_FILES='select-files',
+  SHOW_MESSAGE='show-message'
 }
 
 export interface Question {
   id: string
   type: ACTION_TYPE
-  label: string
+  // label: string
 }
 
 export interface Action<Q extends Question, A extends Answer> {

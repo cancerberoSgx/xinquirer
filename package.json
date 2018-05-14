@@ -5,8 +5,9 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc && cp -rf src/assets dist/src",
-    "start": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",
-    "run": "node node_modules/electron/cli.js dist/examples/selectFileSimpleExample.js",
+    "start1": "rm -rf dist/ && npm run build && electron dist/examples/selectFileSimpleExample.js",
+    "run1": "node electron dist/examples/selectFileSimpleExample.js",
+    "start": "electron",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -25,11 +26,13 @@
   "author": "Sebstián Gurin",
   "license": "ISC",
   "dependencies": {
-    "electron": "^2.0.0"
+    "electron": "^2.0.0",
+    "p-map-series": "^1.0.0"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
     "@types/node": "^10.0.8",
+    "@types/p-map-series": "^1.0.1",
     "typescript": "^2.8.3"
   }
 }

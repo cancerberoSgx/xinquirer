@@ -8,7 +8,7 @@ async function test() {
   const answers = await inquirer.prompt([
     { 
       id: 'targetFile', type: ACTION_TYPE.SELECT_FILES, 
-      label: 'Select a file where to move the class' 
+      dialog: {title: 'Select a file where to move the class' }
     }
   ])
   console.log(`you choose file: `, JSON.stringify(answers))

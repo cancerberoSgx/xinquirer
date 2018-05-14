@@ -16,15 +16,18 @@ export const showMessageAction: ShowMessageAction = {
   * asynchronous and the result will be passed via callback(response).
     */
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
+
     return new Promise(resolve => {
 
     const defaultShowMessageOptions: MessageBoxOptions = {
-      title: 'Choose the target file', 
+      title: 'Message', 
       buttons: ['OK'],
-      message: config.message || 'Generic message'
+     message: 'Generic message'
     }
+    config.dialog = config.dialog || defaultShowMessageOptions
     const finalConfig = Object.assign({}, {dialog: defaultShowMessageOptions}, config)
     finalConfig.dialog = Object.assign({}, defaultShowMessageOptions, config.dialog)
+   // finalConfig.dialog.type = config.dialogType || finalConfig.dialog.type || MessageDialogType.info
 
     // let callbackCalled = false
     const id = dialog.showMessageBox(finalConfig.dialog, (buttonPressed:number, checkboxChecked:boolean)=>{
@@ -41,11 +44,23 @@ export const showMessageAction: ShowMessageAction = {
   }
 }
 
-
+// export enum MessageDialogType {
+//   info='info',
+//   error = 'error',
+//   question='question',
+//   warning='warning'
+// }
+/**
+ *  * label is the title of the dialog
+ *  * dialog.message is the text of in the dialog to show to the user
+ *  * use `dialogType` to customize the dialog icon 
+ */
 export interface ShowMessageQuestion extends Question{
-  message: string,
-  dialog? : MessageBoxOptions
-  buttonLabel?: string
+  // message: string,
+  /** properties to pass directly when creating electron dialog */
+  dialog : MessageBoxOptions
+  // buttonLabel?: string
+  // dialogType?: MessageDialogType
 }
 
 export interface ShowMessageAnswer extends Answer {

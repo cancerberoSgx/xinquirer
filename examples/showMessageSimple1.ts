@@ -7,8 +7,10 @@ async function test() {
   await inquirer.start()
   const answers = await inquirer.prompt([
     { 
-      id: 'targetFile', type: ACTION_TYPE.SHOW_MESSAGE, 
-      label: 'Feel lucky', message: "You win!"
+      id: 'justAMessage', type: ACTION_TYPE.SHOW_MESSAGE, dialog: {
+        title: 'Select 2 files', 
+        message: 'You win!'
+      }
     }
   ])
   console.log(`you selected nothing but let see: `, JSON.stringify(answers))

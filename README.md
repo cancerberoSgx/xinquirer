@@ -4,16 +4,38 @@ like Inquirer.js but for X. Ask user questions showing annoying dialogs on top o
 
 Very *WIP*
 
-## objectives: 
+
+# Widgets supported now:
+
+ * selectFiles
+ * showMessage 
+
+# objectives: 
 
  * file chooser
  * confirm
  * input
  * support linux windows and mac
 
-#### secondary
+### secondary
 
  * option list
+
+
+# Run examples
+
+Build and run :
+
+```sh
+npm run build && npm start -- dist/examples/showMessageSimple1.js
+```
+|
+
+Just run: 
+
+```sh
+npm start -- dist/examples/showMessageSimple1.js
+```
 
 # Motivation: 
 

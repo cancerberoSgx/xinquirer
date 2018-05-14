@@ -1,7 +1,7 @@
 import { BrowserWindow } from "electron";
 import { createWindow } from "./createWindow";
 import { Action, Inquirer, Question, Answer } from "./types";
-
+import mapSeries from 'p-map-series'// = require('p-map-series')
 
 class InquirerImpl implements Inquirer {
   window: BrowserWindow
@@ -16,22 +16,39 @@ class InquirerImpl implements Inquirer {
     this.window.close()
     return Promise.resolve()
   }
-  prompt(questions: Question[]): Promise<Answer[]> {
+async   prompt(questions: Array<Question>): Promise<Answer[]> {
     if (!this.started) {
       throw new Error('start() must be called before prompt()')
     }
-    const promises = questions.map(async question => {
-      const action = this.actions.find(a => a.type === question.type)
-      if (!action) {
-        throw new Error('Action type not supported: ' + JSON.stringify(question))
-      }
-      const answer = await action.execute(this, question)
-      return answer
-    })
+
+    const results = await mapSeries<Question, Answer>(questions, this.questionMapper.bind(this))
+
+    // console.log(results);  
+    return results
     
-    return Promise.all(promises)
+    // const promises = questions.map(async question => {
+    //   console.log('before asking',question.id)
+    //   const action = this.actions.find(a => a.type === question.type)
+    //   if (!action) {
+    //     throw new Error('Action type not supported: ' + JSON.stringify(question))
+    //   }
+    //   const answer = await action.execute(this, question)
+    //   console.log(question.id, answer)
+    //   return answer
+    // })
+    
+    // return Promise.all(promises)
+  }
+  questionMapper(question: Question):Promise<Answer>{
+    const action = this.actions.find(a => a.type === question.type)
+    if (!action) {
+      throw new Error('Action type not supported: ' + JSON.stringify(question))
+    }
+    return action.execute(this, question)
   }
 }
+
+
 
 const ALL_ACTIONS: Action<any, any>[] = []
 
