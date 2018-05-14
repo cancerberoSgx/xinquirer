@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Question | xinquirer</title>
+	<title>SelectColorAnswer | xinquirer</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_types_d_.html">&quot;types.d&quot;</a>
+					<a href="../modules/_actions_selectcolor_d_.html">&quot;actions/selectColor.d&quot;</a>
 				</li>
 				<li>
-					<a href="_types_d_.question.html">Question</a>
+					<a href="_actions_selectcolor_d_.selectcoloranswer.html">SelectColorAnswer</a>
 				</li>
 			</ul>
-			<h1>Interface Question</h1>
+			<h1>Interface SelectColorAnswer</h1>
 		</div>
 	</div>
 </header>
@@ -71,19 +71,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Question</span>
+						<a href="_types_d_.answer.html" class="tsd-signature-type">Answer</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="_actions_showmessage_d_.showmessagequestion.html" class="tsd-signature-type">ShowMessageQuestion</a>
-							</li>
-							<li>
-								<a href="_actions_selectfiles_d_.selectfilesquestion.html" class="tsd-signature-type">SelectFilesQuestion</a>
-							</li>
-							<li>
-								<a href="_actions_confirm_d_.confirmquestion.html" class="tsd-signature-type">ConfirmQuestion</a>
-							</li>
-							<li>
-								<a href="_actions_selectcolor_d_.selectcolorquestion.html" class="tsd-signature-type">SelectColorQuestion</a>
+								<span class="target">SelectColorAnswer</span>
 							</li>
 						</ul>
 					</li>
@@ -96,9 +87,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_d_.question.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_d_.question.html#type" class="tsd-kind-icon">type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_d_.question.html#validate" class="tsd-kind-icon">validate</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_actions_selectcolor_d_.selectcoloranswer.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_actions_selectcolor_d_.selectcoloranswer.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,41 +96,27 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_d_.answer.html">Answer</a>.<a href="_types_d_.answer.html#id">id</a></p>
 						<ul>
-							<li>Defined in types.d.ts:25</li>
+							<li>Defined in types.d.ts:42</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/_types_d_.action_type.html" class="tsd-signature-type">ACTION_TYPE</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="_types_d_.answer.html">Answer</a>.<a href="_types_d_.answer.html#value">value</a></p>
 						<ul>
-							<li>Defined in types.d.ts:26</li>
+							<li>Defined in actions/selectColor.d.ts:12</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="validate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> validate</h3>
-					<div class="tsd-signature tsd-kind-icon">validate<span class="tsd-signature-symbol">:</span> <a href="_types_d_.questionvalidate.html" class="tsd-signature-type">QuestionValidate</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in types.d.ts:31</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Validate the answer, if not valid return a string with a hint explaining the user why.
-							If valid return false. You can return a promise resolved with the same semantic for main the validation async</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -153,7 +129,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_actions_confirm_d_.html">"actions/confirm.d"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_actions_selectcolor_d_.html">"actions/select<wbr>Color.d"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -165,54 +141,42 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_d_.html">"index.d"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_types_d_.html">"types.d"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_types_d_.action_type.html" class="tsd-kind-icon">ACTION_<wbr>TYPE</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_types_d_.action.html" class="tsd-kind-icon">Action</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.answer.html" class="tsd-kind-icon">Answer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.inquirer.html" class="tsd-kind-icon">Inquirer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.messageboxoptions.html" class="tsd-kind-icon">Message<wbr>Box<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.opendialogoptions.html" class="tsd-kind-icon">Open<wbr>Dialog<wbr>Options</a>
+						<a href="_actions_selectcolor_d_.selectcoloraction.html" class="tsd-kind-icon">Select<wbr>Color<wbr>Action</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.question.html" class="tsd-kind-icon">Question</a>
+						<a href="_actions_selectcolor_d_.selectcoloranswer.html" class="tsd-kind-icon">Select<wbr>Color<wbr>Answer</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_d_.question.html#id" class="tsd-kind-icon">id</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_actions_selectcolor_d_.selectcoloranswer.html#id" class="tsd-kind-icon">id</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_d_.question.html#type" class="tsd-kind-icon">type</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_d_.question.html#validate" class="tsd-kind-icon">validate</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="_actions_selectcolor_d_.selectcoloranswer.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_types_d_.questionvalidate.html" class="tsd-kind-icon">Question<wbr>Validate</a>
+						<a href="_actions_selectcolor_d_.selectcolorquestion.html" class="tsd-kind-icon">Select<wbr>Color<wbr>Question</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_actions_selectcolor_d_.html#selectcoloraction-1" class="tsd-kind-icon">select<wbr>Color<wbr>Action</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_types_d_.html#questiontoelectrondialogoption" class="tsd-kind-icon">question<wbr>ToElectron<wbr>Dialog<wbr>Option</a>
+						<a href="../modules/_actions_selectcolor_d_.html#_colorselectedhandler" class="tsd-kind-icon">_color<wbr>Selected<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_actions_selectcolor_d_.html#_getcurrentconfig" class="tsd-kind-icon">_get<wbr>Current<wbr>Config</a>
 					</li>
 				</ul>
 			</nav>

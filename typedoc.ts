@@ -4,6 +4,8 @@ module.exports = {
     './dist/src/index.d.ts',
     './dist/src/actions/showMessage.d.ts',
     './dist/src/actions/selectFiles.d.ts',
+    './dist/src/actions/confirm.d.ts',
+    './dist/src/actions/selectColor.d.ts',
   ],
   "mode": 'modules',
   'includeDeclarations': true,
@@ -13,6 +15,5 @@ module.exports = {
   'excludeProtected': true,
   'excludeExternals': true,
   'readme': 'README.md',
-  'name': 'xinquirer',
-  'entryPoint': 'xinquirer'
+  'name': 'xinquirer'
 }
