@@ -64,22 +64,29 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="inquirer-but-for-the-x">inquirer, but for the X</h1>
 				<p>like Inquirer.js but for X. Ask user questions showing annoying dialogs on top of the current window. based on electron. node.js API.</p>
-				<p>Very <em>WIP</em></p>
+				<p><strong>WIP</strong></p>
+				<h1 id="node-js-api">node.js API</h1>
+				<p>TODO. For now look at examples/select2FilesAnd2Folders</p>
+				<h1 id="cli">CLI</h1>
+				<pre><code class="lang-sh">npm install -g xinquirer
+xinquirer --<span class="hljs-built_in">type</span> select-color --message <span class="hljs-string">"Please select a color for your user"</span> 
+xinquirer --configFile questions1.json --out answers.json
+xinquirer --configFile questions1.js --out answers.json
+</code></pre>
+				<p>configFile could be json or .js. IF you want to validate inputs then you need to write js functions. </p>
+				<p>example: TODO. </p>
 				<h1 id="widgets-supported-now-">Widgets supported now:</h1>
 				<ul>
 					<li>selectFiles</li>
 					<li>showMessage </li>
+					<li>confirm</li>
+					<li>selectColor</li>
 				</ul>
 				<h1 id="objectives-">objectives:</h1>
 				<ul>
-					<li>file chooser</li>
-					<li>confirm</li>
-					<li>input</li>
+					<li>basic components</li>
+					<li>100% offline</li>
 					<li>support linux windows and mac</li>
-				</ul>
-				<h3 id="secondary">secondary</h3>
-				<ul>
-					<li>option list</li>
 				</ul>
 				<h1 id="run-examples">Run examples</h1>
 				<p>Build and run :</p>

@@ -7,3 +7,4 @@
 
  * confirm
  * selectColor
+ * input

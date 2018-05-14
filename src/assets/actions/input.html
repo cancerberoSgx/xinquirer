@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>input</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="actionContainer"></div>
+
+<script>
+const path = require('path')
+const action = require('electron').remote.require(path.join(__dirname, '..', '..', 'actions', 'input'))
+const actionConfig = action._getCurrentConfig()
+
+// actionConfig = {
+//       title: 'Enter your Email',
+//       message: 'Please enter your email:',
+//       placeholder: 'example@server.com',
+//       button: 'Thanks',
+//       inputType: 'date'
+// }
+
+document.title = actionConfig.message
+let inputElStr = ''
+if(actionConfig.textarea){
+    inputElStr+=`<textarea placeholder="${actionConfig.placeholder}" id="actionInput"></textarea>`
+}else{
+    inputElStr+=`<input type="${actionConfig.inputType||'text'}" placeholder="${actionConfig.placeholder||''}" id="actionInput">`
+}
+document.getElementById('actionContainer').innerHTML = `
+<p>${actionConfig.message}</p>
+<form id="inputActionForm">
+${inputElStr}
+<br>
+<input type="submit" id="actionAcceptButton" value="${actionConfig.button||'OK'}">
+</form>
+`
+document.getElementById('inputActionForm').addEventListener('submit', (e)=>{
+    e.preventDefault()
+    e.stopPropagation()
+    const value = document.getElementById('actionInput').value || document.getElementById('actionInput').innerHTML
+    action._inputHandler(value)
+})
+
+</script>    
+
+</body>
+</html>

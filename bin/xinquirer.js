@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// based on node_modules/electron/cli
+
 var electron = require('../node_modules/electron/')
 var path = require('path')
 var proc = require('child_process')

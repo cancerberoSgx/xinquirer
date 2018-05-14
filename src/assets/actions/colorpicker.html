@@ -9,23 +9,20 @@
 <body>
 
 
-    <p id="selectColorMessage">kjashd kajshdkajhds</p>
-    <input type='text' id="full" />
+<p id="actionMessage"></p>
+<input type='text' id="selectColorInput" />
 
 <script>
 const path = require('path')
-const selectColor = require('electron').remote.require(path.join(__dirname, '..', '..', 'actions', 'selectColor'))
-const selectColorConfig = selectColor._getCurrentConfig()
-document.getElementById('selectColorMessage').innerHTML = selectColorConfig.message
-// selectColor._colorSelectedHandler(color:string)
-// selectColor._getCurrentConfig()
+const action = require('electron').remote.require(path.join(__dirname, '..', '..', 'actions', 'selectColor'))
+const inputConfig = action._getCurrentConfig()
+document.getElementById('actionMessage').innerHTML = inputConfig.message
 
+// must remove require and module because if not libraries below wont load
 window.oldRequire = require
 window.oldModule = module
-
 window.require = undefined
 window.module = undefined
-
 
 </script>
 
@@ -37,7 +34,7 @@ window.module = undefined
 
     function installColorPicker(){
       
-s=$("#full").spectrum({
+s=$("#selectColorInput").spectrum({
     color: "#ECC",
     showInput: false,
     className: "full-spectrum",

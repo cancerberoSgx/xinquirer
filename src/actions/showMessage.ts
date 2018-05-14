@@ -3,12 +3,7 @@ import { ACTION_TYPE, Action, Answer, Inquirer, MessageBoxOptions, Question, que
 
 export const showMessageAction: ShowMessageAction = {
   type: ACTION_TYPE.SHOW_MESSAGE,
-
-  /**
-   * Although using this action configuraton we could implement a "confirm" and more, this class
-   * only present an alert and don't have any other logic. For confirmation and 
-   * selections use other Questions, like `confirm`. 
-   */
+  
   execute: (host: Inquirer, config: ShowMessageQuestion) => {
     return new Promise(resolve => {
         config.title = config.title || 'Message',
@@ -24,10 +19,6 @@ export const showMessageAction: ShowMessageAction = {
   }
 }
 
-/**
- *  * dialog.message is the text of in the dialog to show to the user
- *  * use `dialog.type` to customize the dialog icon 
- */
 export interface ShowMessageQuestion extends Question, MessageBoxOptions {
   /** title of the dialog */
   title?: string
@@ -35,8 +26,6 @@ export interface ShowMessageQuestion extends Question, MessageBoxOptions {
   button?: string
   /** Message to show to the user */
   message: string
-  /** properties to pass directly when creating electron dialog */
-  dialog?: MessageBoxOptions
 }
 
 export interface ShowMessageAnswer extends Answer {

@@ -1,8 +1,16 @@
-# inquirer, but for the X
+# xinquirer : inquirer, but for the X
 
-like Inquirer.js but for X. Ask user questions showing annoying dialogs on top of the current window. based on electron. node.js API.
+like Inquirer.js but for X. Ask user questions showing dialogs on top of the current window. Based on electron. node.js API similar to Inquirer.js. CLI supported.
 
 **WIP**
+
+# Widgets supported right now
+
+ * select-files
+ * show-message 
+ * confirm
+ * select-color
+ * input
 
 
 # node.js API
@@ -21,13 +29,6 @@ configFile could be json or .js. IF you want to validate inputs then you need to
 
 example: TODO. 
 
-
-# Widgets supported now:
-
- * selectFiles
- * showMessage 
- * confirm
- * selectColor
 
 # objectives: 
 
